@@ -1,0 +1,335 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+	background-color:black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+img.title {
+	left: 0;
+	width: 10em;
+	position: fixed;
+	z-index: 100;
+}
+#container{
+	background: url('../img/background.webp');
+	/* width:1000px; */
+	/* height:550px; */
+	width: 100vw;
+	height: 100vh;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	border: 1px solid #726d6d;
+	overflow: hidden;
+}
+#hero-1 {
+	background: url("../img/hero-1.png");
+	width:28px;
+	height:28px;
+	position:absolute;
+	left:0;
+	top: 0;
+	background-size: contain;
+}
+#hero-2 {
+	background: url("../img/hero-2.png");
+	width:28px;
+	height:28px;
+	position:absolute;
+	left: 0;
+	top: 0;
+	background-size: contain;
+}
+#hero-3 {
+	background: url("../img/hero-3.png");
+	width:28px;
+	height:28px;
+	left: 0;
+	top: 0;
+	position:absolute;
+	background-size: contain;
+}
+#hero-4 {
+	background: url("../img/hero-4.png");
+	width:28px;
+	height:28px;
+	left: 0;
+	top: 0;
+	position:absolute;
+	background-size: contain;
+}
+
+.enemy-explode {
+	background: url('../img/1942.gif');
+	background-position: -145px -30px;
+	width:28px;
+	height:28px;
+	position:absolute;
+}
+.winner {
+	display:  none;
+	position:  absolute;
+	top: 0;
+	left:  0;
+	right: 0;
+	bottom: 0;
+	/*height: 100vh;*/
+	/*width:  100vw;*/
+	background-color:  rgba(0, 0, 0, 0.4);
+	color:  white;
+	justify-content: center;
+	align-items: center;
+}
+.winner h1 {
+	font-weight: bolder;
+	font-size: 3rem;
+}
+.winner p {
+	font-family: monospace;
+	animation: blink 300ms ease-in-out infinite;
+}
+@keyframes blink {
+	50% {
+		color: yellow;
+	}
+	100% {
+		color:  white;
+	}
+}
+/* 
+
+1:  115	- (-110) w: 35;
+2:  370 - (-105) w: 50;
+3:  -150, (-5)
+4:  -120, (-5)
+5:  -90, (-5)
+6:  -60, (-10)
+7: -30, (-10) w:  28;
+
+ */
+
+.enemy1{
+	background: url('../img/1942.gif');
+	background-position: 115px -110px;
+	width: 35px;
+	height:35px;
+	position:absolute;
+}
+.enemy2{
+	background: url('../img/1942.gif');
+	background-position: 370px -105px;
+	width: 50px;
+	height:50px;
+	position:absolute;
+}
+
+.enemy3{
+	background: url('../img/1942.gif');
+	background-position: -150px -5px;
+	width: 28px;
+	height:28px;
+	position:absolute;
+}
+
+.enemy4{
+	background: url('../img/1942.gif');
+	background-position: -120px -5px;
+	width: 28px;
+	height:28px;
+	position:absolute;
+}
+
+
+.enemy5{
+	background: url('../img/1942.gif');
+	background-position: -90px -5px;
+	width: 28px;
+	height:28px;
+	position:absolute;
+}
+
+.enemy6{
+	background: url('../img/1942.gif');
+	background-position: -60px -5px;
+	width: 28px;
+	height:28px;
+	position:absolute;
+}
+
+
+.enemy7{
+	background: url('../img/1942.gif');
+	background-position: -30px -5px;
+	width: 28px;
+	height:28px;
+	position:absolute;
+}
+
+
+.bullet{
+	background: url('../img/1942.gif');
+	background-position: -185px -400px;
+	width:18px;
+	height:18px;
+	position:absolute;
+}
+.main-container {
+	text-align: center;
+	position: relative;
+}
+#score-board {
+	position:fixed;
+	border:7px solid #F6C60B;
+	top:0px;
+	right: 0px;
+	padding:10px;
+	color: white;
+}
+	#score-board ul {
+		list-style: none;
+	}
+		#score-board ul li {
+			padding: 5px;
+			padding-left: 30px;
+			position: relative;
+		}
+div.queue {
+	position: fixed;
+	z-index: 100;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	padding: 10px;
+	width: 300px;
+	padding-bottom: 20px;
+}
+	div.queue h2 {
+		margin: 0;
+		text-align: left;
+	}
+	div.queue ul {
+		list-style: none;
+		margin: 0;
+		text-align: left;
+		margin: 20px 0;
+		max-height: 100px;;
+		overflow-y: scroll;
+	}
+	div.queue a#start {
+		text-decoration: none;
+		color: white;
+		font-weight: bolder;
+		padding: 10px;
+		background-color: #F6C60B;
+	}
+	div.chats {
+		text-align: left;
+		position: absolute;
+		bottom: 0;
+		right:0;
+		background-color: transparent;
+		width: 300px;
+		color: white;
+	}
+		div.chat-outer, form {
+			bottom: 0;
+			width: 100%;
+			margin: auto;
+			padding: 5px;
+			position: relative;
+			padding-bottom: 20px;
+		}
+		div.chat-outer {
+			max-height: 500px;
+			overflow-y: scroll;
+			text-align: left;
+		}
+
+		div.chat-outer p span#name {
+			width: 50px;
+			font-weight: bold;
+		}
+		form input#msg{
+			padding: 5px;
+			width: 99%;
+			display: block;
+		}
+		form input#btn{
+			margin-top: 10px;
+			display: block;
+			margin-left: auto;
+			margin-right: 0;
+			padding: 5px;
+			background-color: #21a421;
+			color: white;
+			font-weight: bold;
+			border: none;
+		}
+		div.player_scroll::-webkit-scrollbar{
+			width: 0;
+		}
+		div.chat-outer::-webkit-scrollbar {
+			width: 0.5em;
+		}
+		div.chat-outer::-webkit-scrollbar-track {
+			box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+		}
+		div.chat-outer::-webkit-scrollbar-thumb  {
+			background-color: #64afbc;
+			outline: 1px solid #5d99d5;
+			border-radius: 20px;
+		}
+div.timer-wrapper {
+	position: fixed;
+	top: 0;
+	left: 50%;
+	color: white;
+	font-weight: bolder;
+	z-index: 1000;
+}
+	div.timer-wrapper div.timer {
+		font-size: 4em;
+	}
+div.leaderboards {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+	background-color: rgba(0, 0, 0, 0.7);
+	padding: 10px;
+	display: none;
+}
+	div.leaderboards ul {
+		list-style: none;
+	}
+	div.leaderboards ul li {
+		border-top: 1px solid black;
+		border-bottom: 1px solid black;
+		padding: 5px;
+	}
+	a#btn {
+		color: #3f3fd5;
+	}
+	img#sound {
+		position: fixed;
+		top: 15%;
+		left: 0;
+		width: 100px;
+		z-index: 1000;
+	}
+	p.self {
+		color: #f3e0de;
+	}
+	p.other {
+		color: #238f23;
+	}

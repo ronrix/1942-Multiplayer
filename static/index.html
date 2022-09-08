@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>1942 Game</title>
+	<link rel="stylesheet" type="text/css" href="css/game.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script>
+		const socket = io.connect();
+
+		let name = prompt("Set your name");
+		socket.emit("join", name);	
+
+		const sound = new Audio("../sounds/background-sound.mp3");
+		$(document).ready(() => {
+			$("img#sound").click((e) => {
+				const tmp = e.currentTarget.getAttribute("src");
+				e.currentTarget.setAttribute("src", e.currentTarget.getAttribute("data-src"));
+				e.currentTarget.setAttribute("data-src", tmp);
+
+				if(e.currentTarget.getAttribute("src") == "img/sounds.png") {
+					sound.play();
+					sound.loop = true;
+				}
+				else {
+					sound.loop = false;
+				}
+
+			});
+		});
+	</script>
+	<script rel='text/javascript' src='js/Game.js'></script>
+	<script rel='text/javascript' src='js/message.js'></script>
+</head>
+<body>
+	<div class='main-container'>
+		<img src="img/sound-off.webp" alt="sounds" id="sound" data-src="img/sounds.png">
+		<img src="../img/logo.png" alt="1942 logo" class="title">
+		<!-- timer -->
+		<div class="timer-wrapper">
+			<div class="timer">0</div>
+			<span>2 mins</span>
+		</div>
+		<div id='container'>
+			<div id="players"></div>
+			<div id='enemies'> </div>
+			<div id='bullets'> </div>
+		</div>
+		<div id="score-board"><ul></ul></div>
+		<!-- chats -->
+		<div class="chats">
+			<h3>Messages:</h3>
+			<div class="chat-outer">
+				<div class="chat-inner"></div>
+			</div>
+			<form action="">
+				<input id="msg" placeholder="enter your chat here" />
+				<input type="submit" value="Send" id="btn">
+			</form>
+		</div>
+		<!-- leaderboards -->
+		<div class="leaderboards">
+			<h3>Leaderboards</h3>
+			<ul></ul>
+			<a href="" id="btn">restart</a>
+		</div>
+	</div>
+</body>
+</html>
